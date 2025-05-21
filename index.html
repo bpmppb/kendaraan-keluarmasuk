@@ -2,23 +2,33 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pencatatan Kendaraan</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: url('https://source.unsplash.com/1600x900/?office,parking') no-repeat center center fixed;
-      background-size: cover;
       margin: 0;
       padding: 0;
+      background: url('https://source.unsplash.com/1600x900/?parking,security') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9);
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .container {
-      max-width: 500px;
-      margin: 60px auto;
-      background-color: rgba(255, 255, 255, 0.95);
+      width: 100%;
+      max-width: 480px;
+      background-color: #ffffff;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      padding: 30px 25px;
+      padding: 25px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
     h2 {
@@ -33,7 +43,7 @@
       margin-bottom: 15px;
       font-size: 16px;
       border: 1px solid #ccc;
-      border-radius: 6px;
+      border-radius: 8px;
       box-sizing: border-box;
     }
 
@@ -41,68 +51,77 @@
       background-color: #1a73e8;
       color: white;
       border: none;
-      cursor: pointer;
       font-weight: bold;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
     button:hover {
-      background-color: #0b5ed7;
+      background-color: #155cb0;
     }
 
     .footer {
       text-align: center;
       font-size: 13px;
       color: #555;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     iframe {
       display: none;
     }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <h2>DATA KENDARAAN MASUK KELUAR</h2>
+  <div class="overlay">
+    <div class="container">
+      <h2>Pencatatan Kendaraan</h2>
 
-    <form method="POST" 
-          action="https://script.google.com/macros/s/AKfycbwTmKzuu9lI9AVEJWaxNRG5OXg0VMkMiHhaiEdV_ZsGI7XTFZyztoeD-t-7082WPWXK/exec" 
-          target="dummyframe"
-          onsubmit="tampilkanNotifikasi()">
-      
-      <input type="date" name="tanggal" required>
-      <input type="time" name="waktu" required>
-      
-      <select name="keterangan" required>
-        <option value="">--Pilih Masuk/Keluar--</option>
-        <option value="Masuk">Masuk</option>
-        <option value="Keluar">Keluar</option>
-      </select>
-      
-      <select name="jenis" required>
-        <option value="">--Pilih Jenis Kendaraan--</option>
-        <option value="Roda Dua">Roda Dua</option>
-        <option value="Roda Empat">Roda Empat</option>
-      </select>
-      
-      <input type="text" name="warna" placeholder="Warna Kendaraan" required>
-      <input type="text" name="plat" placeholder="Nomor Plat" required>
-      
-      <button type="submit">Simpan Data</button>
-    </form>
+      <form method="POST"
+            action="https://script.google.com/macros/s/AKfycbwTmKzuu9lI9AVEJWaxNRG5OXg0VMkMiHhaiEdV_ZsGI7XTFZyztoeD-t-7082WPWXK/exec"
+            target="dummyframe"
+            onsubmit="return tampilkanNotifikasi()">
 
-    <iframe name="dummyframe"></iframe>
+        <input type="date" name="tanggal" required>
+        <input type="time" name="waktu" required>
 
-    <div class="footer">
-      &copy; 2025 Sistem Keamanan Kendaraan BPMP Papua Barat
+        <select name="keterangan" required>
+          <option value="">--Pilih Masuk/Keluar--</option>
+          <option value="Masuk">Masuk</option>
+          <option value="Keluar">Keluar</option>
+        </select>
+
+        <select name="jenis" required>
+          <option value="">--Pilih Jenis Kendaraan--</option>
+          <option value="Roda Dua">Roda Dua</option>
+          <option value="Roda Empat">Roda Empat</option>
+        </select>
+
+        <input type="text" name="warna" placeholder="Warna Kendaraan" required>
+        <input type="text" name="plat" placeholder="Nomor Plat" required>
+
+        <button type="submit">Simpan Data</button>
+      </form>
+
+      <iframe name="dummyframe"></iframe>
+
+      <div class="footer">
+        &copy; 2025 Sistem Keamanan Kantor
+      </div>
     </div>
   </div>
 
   <script>
     function tampilkanNotifikasi() {
       alert("✅ Data berhasil dikirim!");
+      return true;
     }
   </script>
 
