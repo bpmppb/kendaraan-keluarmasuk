@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pencatatan Kendaraan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://source.unsplash.com/1600x900/?office,parking') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 60px auto;
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      padding: 30px 25px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #1a73e8;
+      margin-bottom: 25px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0b5ed7;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #555;
+      margin-top: 20px;
+    }
+
+    iframe {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>DATA KENDARAAN MASUK KELUAR</h2>
+
+    <form method="POST" 
+          action="https://script.google.com/macros/s/AKfycbwTmKzuu9lI9AVEJWaxNRG5OXg0VMkMiHhaiEdV_ZsGI7XTFZyztoeD-t-7082WPWXK/exec" 
+          target="dummyframe"
+          onsubmit="tampilkanNotifikasi()">
+      
+      <input type="date" name="tanggal" required>
+      <input type="time" name="waktu" required>
+      
+      <select name="keterangan" required>
+        <option value="">--Pilih Masuk/Keluar--</option>
+        <option value="Masuk">Masuk</option>
+        <option value="Keluar">Keluar</option>
+      </select>
+      
+      <select name="jenis" required>
+        <option value="">--Pilih Jenis Kendaraan--</option>
+        <option value="Roda Dua">Roda Dua</option>
+        <option value="Roda Empat">Roda Empat</option>
+      </select>
+      
+      <input type="text" name="warna" placeholder="Warna Kendaraan" required>
+      <input type="text" name="plat" placeholder="Nomor Plat" required>
+      
+      <button type="submit">Simpan Data</button>
+    </form>
+
+    <iframe name="dummyframe"></iframe>
+
+    <div class="footer">
+      &copy; 2025 Sistem Keamanan Kendaraan BPMP Papua Barat
+    </div>
+  </div>
+
+  <script>
+    function tampilkanNotifikasi() {
+      alert("✅ Data berhasil dikirim!");
+    }
+  </script>
+
+</body>
+</html>
