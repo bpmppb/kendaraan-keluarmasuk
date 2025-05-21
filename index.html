@@ -27,7 +27,7 @@
       max-width: 480px;
       border-radius: 12px;
       padding: 25px;
-      background: url('https://imgur.com/a/lCGysGK') no-repeat center center;
+      background: url('https://source.unsplash.com/480x360/?car,road') no-repeat center center;
       background-size: cover;
       position: relative;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
@@ -38,19 +38,30 @@
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
-      background-color: rgba(255, 255, 255, 0.85); /* lapisan transparan */
+      background-color: rgba(255, 255, 255, 0.85); 
       z-index: 1;
     }
 
-    .container form, .container h2, .container .footer {
+    .container * {
       position: relative;
       z-index: 2;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .logo img {
+      width: 80px;
+      height: auto;
     }
 
     h2 {
       text-align: center;
       color: #1a73e8;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
     input, select, button {
@@ -98,6 +109,11 @@
 
   <div class="overlay">
     <div class="container">
+
+      <div class="logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Ministry_of_Education_and_Culture_Indonesia_logo.svg" alt="Logo">
+      </div>
+
       <h2>Pencatatan Kendaraan</h2>
 
       <form method="POST"
