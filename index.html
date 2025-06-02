@@ -150,107 +150,12 @@
     </div>
   </div>
 
-  <script>
-  // Ganti function tampilkanNotifikasi() dengan ini:
-  function tampilkanNotifikasi(event) {
-    event.preventDefault(); // Mencegah submit default
-    
-    const btn = document.querySelector('button[type="submit"]');
-    const originalBtnText = btn.textContent;
-    
-    // Tampilkan loading
-    btn.innerHTML = '<span class="spinner">⌛</span> Mengirim...';
-    btn.disabled = true;
-    
-    // Kirim form secara manual
-    const form = event.target;
-    const formData = new FormData(form);
-    
-    fetch(form.action, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.text();
-    })
-    .then(data => {
-      // Notifikasi sukses
-      showCustomNotification('✅ Data berhasil dikirim!', 'success');
-      form.reset(); // Reset form
-    })
-    .catch(error => {
-      // Notifikasi error
-      showCustomNotification('⚠️ Gagal mengirim data: ' + error.message, 'error');
-      console.error('Error:', error);
-    })
-    .finally(() => {
-      // Kembalikan tombol ke state semula
-      btn.textContent = originalBtnText;
-      btn.disabled = false;
-    });
-    
-    return false;
-  }
-
-  function showCustomNotification(message, type) {
-    const notification = document.createElement('div');
-    notification.className = `custom-notification ${type}`;
-    notification.textContent = message;
-    
-    document.body.appendChild(notification);
-    
-    // Animasi muncul
-    setTimeout(() => {
-      notification.style.opacity = '1';
-      notification.style.transform = 'translateY(0)';
-    }, 100);
-    
-    // Hilangkan setelah 3 detik
-    setTimeout(() => {
-      notification.style.opacity = '0';
-      notification.style.transform = 'translateY(-20px)';
-      setTimeout(() => notification.remove(), 300);
-    }, 3000);
-  }
-</script>
-
-<style>
-  /* Tambahkan CSS ini */
-  .custom-notification {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(-20px);
-    padding: 12px 24px;
-    border-radius: 8px;
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 1000;
-  }
-  
-  .custom-notification.success {
-    background-color: #4CAF50;
-  }
-  
-  .custom-notification.error {
-    background-color: #f44336;
-  }
-  
-  button .spinner {
-    display: inline-block;
-    margin-right: 8px;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-</style>
+ <script>
+    function tampilkanNotifikasi() {
+      alert("✅ Data berhasil dikirim!");
+      return true;
+    }
+  </script>
 
 </body>
 </html>
